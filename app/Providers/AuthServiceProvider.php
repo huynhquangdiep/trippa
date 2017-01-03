@@ -27,5 +27,8 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Passport::routes();
+
+        //enable implicit grant in passport
+        Passport::enableImplicitGrant();
     }
 }
