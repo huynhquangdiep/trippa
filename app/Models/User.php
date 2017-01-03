@@ -22,6 +22,7 @@ class User extends Authenticatable
         'badge',
         'longitude',
         'latitude',
+        'password',
     ];
 
     /**
