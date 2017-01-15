@@ -3,12 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class TripLocationMapping extends Model
+class Like extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'trip_id',
-        'location_id',
+        'user_id',
     ];
 
     public function trip()
@@ -16,8 +19,8 @@ class TripLocationMapping extends Model
         return $this->belongsTo(Trip::class);
     }
 
-    public function location()
+    public function user()
     {
-        return $this->belongsTo(Location::class);
+        return $this->belongsTo(User::class);
     }
 }

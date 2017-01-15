@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Trip;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
-class TripTableSeeder extends Seeder
+class CategoryTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +12,7 @@ class TripTableSeeder extends Seeder
      */
     public function run()
     {
-        Trip::truncate();
-        factory(Trip::class, 10)->create();
+        Category::truncate();
+        factory(Category::class, 5)->create();
     }
 }

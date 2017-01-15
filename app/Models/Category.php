@@ -5,19 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Media extends Model
+class Category extends Model
 {
     use SoftDeletes;
 
     protected $fillable = [
         'name',
-        'path',
-        'card_id',
+        'description',
         'type',
     ];
 
-    public function card()
+    public function cards()
     {
-        return $this->belongsTo(Card::class);
+        return $this->hasMany(Card::class);
+    }
+
+    public function trips()
+    {
+        return $this->hasMany(Trip::class);
     }
 }

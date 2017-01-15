@@ -5,10 +5,12 @@ namespace App\Models;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable;
+    use HasApiTokens, SoftDeletes, Notifiable;
+
 
     /**
      * The attributes that are mass assignable.
@@ -16,13 +18,20 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'userName',
+        'username',
         'email',
-        'introduction',
-        'badge',
-        'longitude',
-        'latitude',
         'password',
+        'fullname',
+        'birthday',
+        'gender',
+        'avatar',
+        'address',
+        'last_logged_at',
+        'password_changed_at',
+        'status',
+        'api_token',
+        'introduction',
+        'remember_token',
     ];
 
     /**
@@ -35,29 +44,24 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    public function userGiftMappings()
-    {
-        return $this->hasMany(UserGiftMapping::class);
-    }
-
-    public function groupUserMappings()
-    {
-        return $this->hasMany(GroupUserMapping::class);
-    }
-
     public function trips()
     {
         return $this->hasMany(Trip::class);
     }
 
-    public function messages()
+    public function relationships()
     {
-        return $this->hasMany(Message::class);
+        return $this->hasMany(Relationship::class);
     }
 
-    public function conversations()
+    public function likes()
     {
-        return $this->hasMany(Conversation::class);
+        return $this->hasMany(Like::class);
+    }
+
+    public function cards()
+    {
+        return $this->hasMany(Card::class);
     }
 
     public function setPasswordAttribute($value)

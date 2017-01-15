@@ -14,24 +14,14 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
         $this->call(UserTableSeeder::class);
-        $this->call(GiftTableSeeder::class);
-        $this->call(UserGiftMappingTableSeeder::class);
-        $this->call(GroupTableSeeder::class);
-        $this->call(GroupUserMappingTableSeeder::class);
+        $this->call(RelationshipTableSeeder::class);
+        $this->call(CategoryTableSeeder::class);
         $this->call(LocationTableSeeder::class);
-        $this->call(CategoryTripTableSeeder::class);
-        $this->call(TripTableSeeder::class);
-        $this->call(TripLocationMappingTableSeeder::class);
-        $this->call(CategoryPostTableSeeder::class);
+        $this->call(CardTableSeeder::class);
         $this->call(MediaTableSeeder::class);
-        $this->call(ConversationTableSeeder::class);
-        $this->call(PostTableSeeder::class);
-        $this->call(MediaTopicMappingTableSeeder::class);
-        $this->call(CommentTableSeeder::class);
-        $this->call(EventTableSeeder::class);
-        $this->call(ScheduleTableSeeder::class);
-        $this->call(AttachmentTableSeeder::class);
-        $this->call(MessageTableSeeder::class);
+        $this->call(TripTableSeeder::class);
+        $this->call(CardTripTableSeeder::class);
+        $this->call(LikeTableSeeder::class);
         Model::reguard();
     }
 }

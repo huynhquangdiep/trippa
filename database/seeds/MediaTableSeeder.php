@@ -13,6 +13,6 @@ class MediaTableSeeder extends Seeder
     public function run()
     {
         Media::truncate();
-        factory(Media::class, config('settings.seed.number_of_media'))->create();
+        factory(Media::class, 10)->create();
     }
 }

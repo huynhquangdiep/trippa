@@ -15,9 +15,12 @@ class CreateMediaTable extends Migration
     {
         Schema::create('media', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name', 255);
-            $table->string('url', 100);
+            $table->string('name');
+            $table->string('path');
+            $table->integer('card_id')->index();
+            $table->tinyInteger('type')->default(0);
             $table->timestamps();
+             $table->softDeletes();
         });
     }
 

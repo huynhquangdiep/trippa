@@ -13,6 +13,6 @@ class LocationTableSeeder extends Seeder
     public function run()
     {
         Location::truncate();
-        factory(Location::class, config('settings.seed.number_of_location'))->create();
+        factory(Location::class, 20)->create();
     }
 }

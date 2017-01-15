@@ -3,18 +3,17 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class GroupUserMapping extends Model
+class Relationship extends Model
 {
-    protected $fillable = [
-        'group_id',
-        'user_id',
-    ];
+    use SoftDeletes;
 
-    public function group()
-    {
-        return $this->belongsTo(Group::class);
-    }
+    protected $fillable = [
+        'following_id',
+        'follower_id',
+        'type',
+    ];
 
     public function user()
     {

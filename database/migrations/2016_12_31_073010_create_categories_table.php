@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserGiftMappingsTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateUserGiftMappingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_gift_mappings', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->index();
-            $table->integer('gift_id')->index();
+            $table->string('name');
+            $table->text('description')->nullable()->default(null);
+            $table->tinyInteger('type')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -28,6 +30,6 @@ class CreateUserGiftMappingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_gift_mappings');
+        Schema::dropIfExists('categories');
     }
 }
