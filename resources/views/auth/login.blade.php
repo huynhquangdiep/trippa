@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('frontend.home.app')
+
+@section('header')
+    @extends('frontend._partials.header')
+@endsection
 
 @section('content')
 <div class="container">
@@ -7,7 +11,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ URL::action('API\LoginController@store') }}">
+                    <form class="form-horizontal" role="form" method="POST" route="login">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -66,3 +70,8 @@
     </div>
 </div>
 @endsection
+
+@section('footer')
+    @extends('frontend._partials.footer')
+@endsection
+
