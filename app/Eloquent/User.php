@@ -2,13 +2,15 @@
 
 namespace App\Eloquent;
 
+use Storage;
 use Laravel\Passport\HasApiTokens;
+use App\Traits\Eloquent\GetImageTrait;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable;
+    use HasApiTokens, Notifiable, GetImageTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -35,5 +37,10 @@ class User extends Authenticatable
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
+    }
+
+    public function getAvatarPath()
+    {
+       //return $this->getImageDefaultAttribute($this->image);
     }
 }

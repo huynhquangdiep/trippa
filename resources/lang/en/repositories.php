@@ -13,6 +13,8 @@ return [
     'delete' => 'Delete',
     'show'  => 'Info',
 
+    'user' => 'User',
+
     'object_created_successfully'    => 'Created :object',
     'object_updated_successfully'    => 'Updated :object',
     'object_deleted_successfully'    => 'Deleted :object',

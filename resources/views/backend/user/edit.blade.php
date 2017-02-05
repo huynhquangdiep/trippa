@@ -9,10 +9,18 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading">{{ $heading }}</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="user">
+                    <form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="{{ URL::action('Backend\UserController@update', auth()->id()) }}">
                         {{ csrf_field() }}
+
+                        <input name="_method" type="hidden" value="PUT">
+
+                        <div class="form-group">
+                            <div class="col-md-12 col-md-offset-4">
+                                <img class="img-profile" id="output" src="{{ auth()->user()->getAvatarPath() }}"/>
+                            </div>
+                        </div>
 
                         <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
                             <label for="image" class="col-md-4 control-label">Image</label>
@@ -32,7 +40,7 @@
                             <label for="userName" class="col-md-4 control-label">Username</label>
 
                             <div class="col-md-6">
-                                <input id="userName" type="text" class="form-control" name="userName" value="{{ old('userName') }}" autofocus>
+                                <input id="userName" type="text" class="form-control" name="userName" value="{{ $item->userName }}" autofocus>
 
                                 @if ($errors->has('userName'))
                                     <span class="help-block">
@@ -46,7 +54,7 @@
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                <input id="email" type="email" class="form-control" name="email" value="{{ $item->email }}">
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -81,7 +89,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-
+                                    Update
                                 </button>
                             </div>
                         </div>

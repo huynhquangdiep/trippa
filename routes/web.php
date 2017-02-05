@@ -21,7 +21,7 @@ Route::group(['namespace' => 'Frontend'], function() {
     Route::resource('home', 'HomeController');
 });
 
-Route::group(['namespace' => 'Backend'], function() {
+Route::group(['namespace' => 'Backend', 'middleware' => 'auth'], function() {
     Route::resource('user', 'UserController');
 });
 
